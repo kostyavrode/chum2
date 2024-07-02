@@ -7,10 +7,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text moneyBar;
     [SerializeField] private TMP_Text scoreBar;
     [SerializeField] private TMP_Text bestScoreBar;
+    private GameManager gameManager;
     private GameInfoHandler gameInfoHandler;
     private void Start()
     {
         gameInfoHandler = ServiceLocator.GetService<GameInfoHandler>();
+        gameManager= ServiceLocator.GetService<GameManager>();
         ShowMoney();
     }
     public void ShowMoney()
@@ -32,6 +34,10 @@ public class UIManager : MonoBehaviour
     public void PauseButton()
     {
         ServiceLocator.GetService<GameManager>().PauseGame();
+    }
+    public void ContinueButton()
+    {
+        gameManager.StartGame();
     }
     public void EndGameButton()
     {
