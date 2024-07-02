@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject[] uiPanels;
     [SerializeField] private TMP_Text moneyBar;
     [SerializeField] private TMP_Text scoreBar;
     [SerializeField] private TMP_Text bestScoreBar;
@@ -14,6 +16,30 @@ public class UIManager : MonoBehaviour
         gameInfoHandler = ServiceLocator.GetService<GameInfoHandler>();
         gameManager= ServiceLocator.GetService<GameManager>();
         ShowMoney();
+        GameManager.onGameStateChange += CheckGameState;
+    }
+    private void OnDisable()
+    {
+        
+    }
+    private void CheckGameState(GameState state)
+    {
+        switch (state)
+        {
+            case GameState.OFF:
+                break;
+            case GameState.PLAYING:
+                break;
+            case GameState.PAUSED:
+                break;
+            case GameState.FINISHED:
+                bestScoreBar.text = gameInfoHandler.GetBestScore().ToString();
+                uiPanels[4].SetActive(true);
+                uiPanels[3].SetActive(false);
+                break;
+            case GameState.END:
+                break;
+        }
     }
     public void ShowMoney()
     {
