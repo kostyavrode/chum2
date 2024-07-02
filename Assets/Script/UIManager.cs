@@ -11,10 +11,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text bestScoreBar;
     private GameManager gameManager;
     private GameInfoHandler gameInfoHandler;
+    private AudioManager audioManager;
     private void Start()
     {
         gameInfoHandler = ServiceLocator.GetService<GameInfoHandler>();
         gameManager= ServiceLocator.GetService<GameManager>();
+        audioManager = ServiceLocator.GetService<AudioManager>();
         ShowMoney();
         GameManager.onGameStateChange += CheckGameState;
     }
@@ -76,6 +78,14 @@ public class UIManager : MonoBehaviour
     public void SoundOffButton()
     {
         ServiceLocator.GetService<AudioManager>().ChangeSoundState(SoundState.OFF);
+    }
+    public void MusicOffButton()
+    {
+        audioManager.ChangeMusicState(SoundState.OFF);
+    }
+    public void MusicOnButton()
+    {
+        audioManager.ChangeMusicState(SoundState.ON);
     }
     public void VibroOnButton()
     {

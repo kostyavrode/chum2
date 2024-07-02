@@ -10,32 +10,36 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource mainSource;
     [SerializeField] private AudioSource[] otherSources;
-    private SoundState state;
+    private SoundState soundState;
+    private SoundState musicState;
     public void Awake()
     {
         if (!PlayerPrefs.HasKey("SoundState"))
         {
             PlayerPrefs.SetInt("SoundState", 1);
+            PlayerPrefs.SetInt("MusicState", 1);
             ChangeSoundState(SoundState.ON);
+            ChangeMusicState(SoundState.ON);
         }
         else if (PlayerPrefs.GetInt("SoundState")==0)
         {
             ChangeSoundState(SoundState.OFF);
+            ChangeMusicState(SoundState.OFF);
         }
         else
         {
+            ChangeMusicState(SoundState.ON);
             ChangeSoundState(SoundState.ON);
         }
         DontDestroyOnLoad(mainSource.gameObject);
     }
     public void ChangeSoundState(SoundState soundState)
     {
-        state = soundState;
-        switch (state)
+        this.soundState = soundState;
+        switch (this.soundState)
         {
             case SoundState.OFF:
                 PlayerPrefs.SetInt("SoundState", 0);
-                mainSource.Pause();
                 foreach (AudioSource source in otherSources)
                 {
                     source.volume = 0;
@@ -43,11 +47,27 @@ public class AudioManager : MonoBehaviour
                 break;
             case SoundState.ON:
                 PlayerPrefs.SetInt("SoundState", 1);
-                mainSource.Play();
                 foreach (AudioSource source in otherSources)
                 {
                     source.volume = 0.5f;
                 }
+                break;
+            default:
+                break;
+        }
+    }
+    public void ChangeMusicState(SoundState soundState)
+    {
+        this.soundState = soundState;
+        switch (this.soundState)
+        {
+            case SoundState.OFF:
+                PlayerPrefs.SetInt("MusicState", 0);
+                mainSource.Pause();
+                break;
+            case SoundState.ON:
+                PlayerPrefs.SetInt("MusicState", 1);
+                mainSource.Play();
                 break;
             default:
                 break;
