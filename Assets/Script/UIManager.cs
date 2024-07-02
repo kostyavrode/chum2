@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void StartButton()
     {
-        
+        ServiceLocator.GetService<GameManager>().StartGame();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void PauseButton()
     {
-        
+        ServiceLocator.GetService<GameManager>().PauseGame();
+    }
+    public void EndGameButton()
+    {
+
+    }
+    public void SoundOnButton()
+    {
+        ServiceLocator.GetService<AudioManager>().ChangeSoundState(SoundState.ON);
+    }
+    public void SoundOffButton()
+    {
+        ServiceLocator.GetService<AudioManager>().ChangeSoundState(SoundState.OFF);
     }
 }
