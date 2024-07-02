@@ -10,14 +10,23 @@ public class InteractionMenu : MonoBehaviour
     public int gameType;
     public Image targetImage;
     public int currentImageNum;
+    public GameObject completeButton;
     private void OnEnable()
     {
         currentImageNum = 0;
         targetImage = images[currentImageNum];
+        ShakeImages();
     }
     private void FixedUpdate()
     {
         CheckPositions();
+    }
+    private void ShakeImages()
+    {
+        for (int i = 0; i < images.Length; i++)
+        {
+            images[i].transform.Rotate(new Vector3(0, 0, 1), (10 * UnityEngine.Random.Range(1,35)));
+        }
     }
     private void CheckPositions()
     {
@@ -34,6 +43,7 @@ public class InteractionMenu : MonoBehaviour
         if (t==rightPositions.Length)
         {
             Debug.Log("RIGHT"+rightPositions.Length);
+            completeButton.SetActive(true);
         }
     }
     public void NextImage()

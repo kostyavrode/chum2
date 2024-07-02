@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Animator animator;
+    public void SetAnimatorParameters(float p)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        animator.SetFloat("speed", p);
     }
 }
