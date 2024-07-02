@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text moneyBar;
     [SerializeField] private TMP_Text scoreBar;
     [SerializeField] private TMP_Text bestScoreBar;
+    [SerializeField] private GameObject interactButton;
     private GameManager gameManager;
     private GameInfoHandler gameInfoHandler;
     private AudioManager audioManager;
@@ -22,7 +23,7 @@ public class UIManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        GameManager.onGameStateChange -= CheckGameState;
     }
     private void CheckGameState(GameState state)
     {
@@ -56,9 +57,13 @@ public class UIManager : MonoBehaviour
     {
         bestScoreBar.text=gameInfoHandler.GetBestScore().ToString();
     }
+    public void ShowInteractButton(bool show)
+    {
+        interactButton.gameObject.SetActive(show);
+    }
     public void StartButton()
     {
-        ServiceLocator.GetService<GameManager>().StartGame();
+        gameManager.StartGame();
     }
     public void PauseButton()
     {
