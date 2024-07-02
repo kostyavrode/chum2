@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text scoreBar;
     [SerializeField] private TMP_Text bestScoreBar;
     [SerializeField] private GameObject interactButton;
+    [SerializeField] private GameObject interactMenu;
     private GameManager gameManager;
     private GameInfoHandler gameInfoHandler;
     private AudioManager audioManager;
@@ -56,6 +57,10 @@ public class UIManager : MonoBehaviour
     public void ShowBestScore()
     {
         bestScoreBar.text=gameInfoHandler.GetBestScore().ToString();
+    }
+    public void InteractButton()
+    {
+        interactMenu.SetActive(true);
     }
     public void ShowInteractButton(bool show)
     {
