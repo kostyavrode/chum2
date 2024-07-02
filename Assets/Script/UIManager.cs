@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
             case GameState.OFF:
                 break;
             case GameState.PLAYING:
+                ShowScore();
                 break;
             case GameState.PAUSED:
                 break;
