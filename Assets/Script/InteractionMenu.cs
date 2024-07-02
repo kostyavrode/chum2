@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 public class InteractionMenu : MonoBehaviour
 {
     public Image[] images;
+    public int[] rightPositions;
     public int gameType;
     public Image targetImage;
     public int currentImageNum;
@@ -12,7 +14,27 @@ public class InteractionMenu : MonoBehaviour
     {
         currentImageNum = 0;
         targetImage = images[currentImageNum];
-        Debug.Log("GameStarted");
+    }
+    private void FixedUpdate()
+    {
+        CheckPositions();
+    }
+    private void CheckPositions()
+    {
+        int t = 0;
+        for (int i = 0; i < rightPositions.Length; i++)
+        {
+            Debug.Log(Math.Round(images[i].transform.eulerAngles.z));
+            if (rightPositions[i] == Math.Round(images[i].transform.eulerAngles.z))
+            {
+                t += 1;
+                
+            }
+        }
+        if (t==rightPositions.Length)
+        {
+            Debug.Log("RIGHT"+rightPositions.Length);
+        }
     }
     public void NextImage()
     {
@@ -38,4 +60,5 @@ public class InteractionMenu : MonoBehaviour
     {
         targetImage.transform.Rotate(new Vector3(0, 0, -1), 10);
     }
+
 }

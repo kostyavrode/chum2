@@ -3939,6 +3939,7 @@ MonoBehaviour:
   images:
   - {fileID: 890759347}
   - {fileID: 1530949783}
+  rightPositions: 0a0000000a000000
   gameType: 0
   targetImage: {fileID: 1530949783}
   currentImageNum: 0
