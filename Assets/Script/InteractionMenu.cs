@@ -21,6 +21,13 @@ public class InteractionMenu : MonoBehaviour
     {
         CheckPositions();
     }
+    public void SetGameImage(Sprite sprite)
+    {
+        foreach (Image item in images)
+        {
+            item.sprite = sprite;
+        }
+    }
     private void ShakeImages()
     {
         for (int i = 0; i < images.Length; i++)

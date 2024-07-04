@@ -30,6 +30,8 @@ public class InteractionController : MonoBehaviour
             if (hit.collider.tag == "Interaction")
             {
                 isCanInteract = true;
+                hit.collider.SendMessage("SetInteractSprite");
+                hit.collider.GetComponent<InteractionComponent>().SetInteractSprite();
             }
             else
             {
