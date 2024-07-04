@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 public class InteractionMenu : MonoBehaviour
 {
+    public GameObject menuObject;
     public Image[] images;
     public int[] rightPositions;
     public int gameType;
     public Image targetImage;
     public int currentImageNum;
     public GameObject completeButton;
+    private GameObject DoorToOpen;
     private void OnEnable()
     {
         currentImageNum = 0;
@@ -19,14 +22,20 @@ public class InteractionMenu : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (menuObject.activeSelf)
         CheckPositions();
     }
-    public void SetGameImage(Sprite sprite)
+    public void TurnGameMenu(bool b)
+    {
+        menuObject.SetActive(b);
+    }
+    public void SetGameImage(Sprite sprite,GameObject door)
     {
         foreach (Image item in images)
         {
             item.sprite = sprite;
         }
+        DoorToOpen=door;
     }
     private void ShakeImages()
     {
@@ -44,7 +53,6 @@ public class InteractionMenu : MonoBehaviour
             if (rightPositions[i] == Math.Round(images[i].transform.eulerAngles.z))
             {
                 t += 1;
-                
             }
         }
         if (t==rightPositions.Length)
@@ -52,6 +60,11 @@ public class InteractionMenu : MonoBehaviour
             Debug.Log("RIGHT"+rightPositions.Length);
             completeButton.SetActive(true);
         }
+    }
+    public void CompleteButton()
+    {
+        menuObject.SetActive(false);
+        DoorToOpen.transform.DOLocalRotate(new Vector3(0, -290, 0), 1f);
     }
     public void NextImage()
     {

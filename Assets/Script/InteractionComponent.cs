@@ -6,6 +6,6 @@ public class InteractionComponent : MonoBehaviour
     public Sprite gameSprite;
     public void SetInteractSprite()
     {
-        ServiceLocator.GetService<InteractionMenu>().SetGameImage(gameSprite);
+        ServiceLocator.GetService<InteractionMenu>().SetGameImage(gameSprite,gameObject);
     }
 }

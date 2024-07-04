@@ -60,7 +60,7 @@ public class UIManager : MonoBehaviour
     }
     public void InteractButton()
     {
-        interactMenu.SetActive(true);
+        ServiceLocator.GetService<InteractionMenu>().TurnGameMenu(true);
     }
     public void ShowInteractButton(bool show)
     {

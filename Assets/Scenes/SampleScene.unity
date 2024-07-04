@@ -3530,7 +3530,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 780108200}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2052620988}
+        m_TargetAssemblyTypeName: InteractionMenu, Assembly-CSharp
+        m_MethodName: CompleteButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &780108200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4765,7 +4777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &936908079
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4837,11 +4849,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936908078}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 158883fc3cea7804aa5ea0e16ca3065c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuObject: {fileID: 0}
   images:
   - {fileID: 1662515033}
   - {fileID: 1666765256}
@@ -9803,6 +9816,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 344147951}
+--- !u!1 &2052620986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052620987}
+  - component: {fileID: 2052620988}
+  m_Layer: 0
+  m_Name: InteractionMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2052620987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052620986}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2137374949}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052620988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052620986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158883fc3cea7804aa5ea0e16ca3065c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuObject: {fileID: 936908078}
+  images:
+  - {fileID: 1662515033}
+  - {fileID: 1666765256}
+  - {fileID: 742472317}
+  - {fileID: 682459044}
+  rightPositions: 00000000000000000000000000000000
+  gameType: 0
+  targetImage: {fileID: 1530949783}
+  currentImageNum: 0
+  completeButton: {fileID: 780108197}
 --- !u!1 &2108557743
 GameObject:
   m_ObjectHideFlags: 0
@@ -10103,6 +10171,7 @@ Transform:
   - {fileID: 567080763}
   - {fileID: 1154350555}
   - {fileID: 2045864978}
+  - {fileID: 2052620987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145691724
@@ -10156,7 +10225,7 @@ MonoBehaviour:
   - {fileID: 567080764}
   - {fileID: 1154350556}
   - {fileID: 2045864979}
-  - {fileID: 936908080}
+  - {fileID: 2052620988}
 --- !u!1001 &8373873636613329242
 PrefabInstance:
   m_ObjectHideFlags: 0
