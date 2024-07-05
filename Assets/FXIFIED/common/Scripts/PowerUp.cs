@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-
+    public int type;
     public GameObject pickupEffect;
+    public GameObject thingToOpen;
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,7 +20,14 @@ public class PowerUp : MonoBehaviour
     {
         Instantiate(pickupEffect, transform.position, transform.rotation);
 
-
+        if (type == 0)
+        {
+            ServiceLocator.GetService<GameInfoHandler>().AddMoney();
+        }
+        else
+        {
+            thingToOpen.SetActive(true);
+        }
         Destroy(gameObject);
     }
 }
