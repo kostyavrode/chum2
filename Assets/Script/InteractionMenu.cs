@@ -11,6 +11,7 @@ public class InteractionMenu : MonoBehaviour
     public int[] rightPositions;
     public int gameType;
     public Image targetImage;
+    public Image bgImage;
     public int currentImageNum;
     public GameObject completeButton;
     private GameObject DoorToOpen;
@@ -19,6 +20,7 @@ public class InteractionMenu : MonoBehaviour
         currentImageNum = 0;
         targetImage = images[currentImageNum];
         ShakeImages();
+        completeButton.SetActive(false);
     }
     private void FixedUpdate()
     {
@@ -29,12 +31,13 @@ public class InteractionMenu : MonoBehaviour
     {
         menuObject.SetActive(b);
     }
-    public void SetGameImage(Sprite sprite,GameObject door)
+    public void SetGameImage(Sprite sprite,Sprite bg,GameObject door)
     {
         foreach (Image item in images)
         {
             item.sprite = sprite;
         }
+        bgImage.sprite = bg;
         DoorToOpen=door;
     }
     private void ShakeImages()

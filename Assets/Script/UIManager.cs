@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShowScore()
     {
-        scoreBar.text= gameInfoHandler.GetScore().ToString();
+        scoreBar.text= gameInfoHandler.GetMoney().ToString();
     }
     public void ShowBestScore()
     {
@@ -64,7 +64,9 @@ public class UIManager : MonoBehaviour
     }
     public void ShowInteractButton(bool show)
     {
+        Debug.Log(interactButton);
         interactButton.gameObject.SetActive(show);
+        
     }
     public void StartButton()
     {

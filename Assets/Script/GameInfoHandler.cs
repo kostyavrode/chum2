@@ -17,6 +17,8 @@ public class GameInfoHandler : MonoBehaviour
     private void OnDisable()
     {
         GameManager.onGameStateChange -= CheckGameState;
+        PlayerPrefs.SetInt("Money", money);
+        PlayerPrefs.Save();
     }
     private void FixedUpdate()
     {
@@ -44,6 +46,7 @@ public class GameInfoHandler : MonoBehaviour
     public void AddMoney()
     {
         money++;
+        ServiceLocator.GetService<UIManager>().ShowScore(); 
     }
     public void MinusMoney(int count)
     {

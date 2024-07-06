@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             case GameState.FINISHED:
                 break;
             case GameState.END:
+                ServiceLocator.ClearServiceList();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 break;
         }

@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class InteractionController : MonoBehaviour
 {
-    private UIManager uiManager;
+    public UIManager uiManager;
     private bool isCanInteract;
     private void Start()
     {
+        if (!uiManager)
         uiManager=ServiceLocator.GetService<UIManager>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
+        Debug.Log(uiManager);
+        //if (!uiManager)
+        
+        
+        
         CheckIntercation();
         if (isCanInteract)
         {
-            uiManager.ShowInteractButton(true);
+            ServiceLocator.GetService<UIManager>().ShowInteractButton(true);
         }
         else
         {
-            uiManager.ShowInteractButton(false);
+            ServiceLocator.GetService<UIManager>().ShowInteractButton(false);
         }
     }
     private void CheckIntercation()
