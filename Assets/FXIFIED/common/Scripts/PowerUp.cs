@@ -19,7 +19,7 @@ public class PowerUp : MonoBehaviour
     void Pickup()
     {
         Instantiate(pickupEffect, transform.position, transform.rotation);
-
+        ServiceLocator.GetService<VibrationManager>().MakeVibration(0.2f);
         if (type == 0)
         {
             ServiceLocator.GetService<GameInfoHandler>().AddMoney();

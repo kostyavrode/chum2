@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
             ChangeMusicState(SoundState.ON);
             ChangeSoundState(SoundState.ON);
         }
-        DontDestroyOnLoad(mainSource.gameObject);
+        //DontDestroyOnLoad(mainSource.gameObject);
     }
     public void ChangeSoundState(SoundState soundState)
     {
