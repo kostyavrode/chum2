@@ -39,6 +39,7 @@ public class InteractionMenu : MonoBehaviour
         }
         bgImage.sprite = bg;
         DoorToOpen=door;
+        completeButton.SetActive(false);
     }
     private void ShakeImages()
     {
